@@ -7,5 +7,12 @@
     {
       "path": "./tsconfig.app.json"
     }
-  ]
+  ],
+  //配置别名路径可以在写代码时联想提示路径
+  "compilerOptions" : {
+    "baseUrl" : "./",
+    "paths" : {
+      "@/*":["src/*"]
+    }
+  }
 }
