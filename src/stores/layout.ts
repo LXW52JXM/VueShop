@@ -1,21 +1,21 @@
 import { defineStore } from "pinia"
 import {getCategroyAPI} from "@/apis/layout"
-import type{RootObject,Result} from "@/type/type"
-import { reactive,ref } from "vue"
+import type{Result} from "@/type/type"
+import {ref } from "vue"
 
 
-export const useStore=defineStore({
-    id:'head',
-    state:()=>({
-        list:<RootObject>{}
-    }),
-    actions:{
-      async getCategroy(){
-            const list:any =await getCategroyAPI()
-            this.list=list
-        }
-    }
-})
+// export const useStore=defineStore({
+//     id:'head',
+//     state:()=>({
+//         list:<RootObject>{}
+//     }),
+//     actions:{
+//       async getCategroy(){
+//             const list:any =await getCategroyAPI()
+//             this.list=list
+//         }
+//     }
+// })
 
 export const useCategoryStore = defineStore('category', () => {
     // 导航列表的数据管理

@@ -6,7 +6,7 @@ import LayoutFixed from './components/LayoutFixed.vue'
 </script>
 
 <template>
-    <LayoutFixed/>
+    <LayoutFixed/><!-- 滑动头部 -->
     <LayoutNav />
     <LayoutHeader />
     <RouterView /><!-- 路由给Home页面预留的位置 -->
