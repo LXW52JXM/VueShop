@@ -28,3 +28,18 @@ export interface RootObject {
 	msg: string;
 	result: Result[];
 }
+
+
+//banner轮播图数据
+export interface BannerResult {
+	id: string;
+	imgUrl: string;
+	hrefUrl: string;
+	type: string;
+}
+
+export interface BannerRoot {
+	code: string;
+	msg: string;
+	result: BannerResult[];
+}
