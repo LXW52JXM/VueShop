@@ -43,3 +43,19 @@ export interface BannerRoot {
 	msg: string;
 	result: BannerResult[];
 }
+
+//new数据
+export interface NewResult {
+	id: string;
+	name: string;
+	desc: string;
+	price: string;
+	picture: string;
+	orderNum: number;
+}
+
+export interface NewRoot {
+	code: string;
+	msg: string;
+	result: Result[];
+}

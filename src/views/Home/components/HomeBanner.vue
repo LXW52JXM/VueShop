@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import{useBanner}from "@/stores/banner"
+import{useBanner}from "@/stores/home"
 import{onMounted}from "vue"
 
 const store=useBanner()
