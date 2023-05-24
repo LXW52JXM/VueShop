@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import {getCategroyAPI} from "@/apis/layout"
-import type{Result} from "@/type/type"
+import type{Result,RootObject} from "@/type/type"
 import {ref } from "vue"
 
 
@@ -20,12 +20,12 @@ import {ref } from "vue"
 export const useCategoryStore = defineStore('category', () => {
     // 导航列表的数据管理
     // state 导航列表数据
-    const categoryList=ref<Result[]>()
+    const categoryList=ref<RootObject<Result[]>>()
   
     // action 获取导航数据的方法
       const getCategory = async () => {
       const res:any= await getCategroyAPI()
-      categoryList.value = res.result
+      categoryList.value = res
       console.log(categoryList)
     }
   

@@ -14,7 +14,7 @@ onMounted(async () => {
 <template>
   <div class="home-banner">
     <el-carousel height="500px">
-      <el-carousel-item v-for="item in store.bannerList" :key="item.id">
+      <el-carousel-item v-for="item in store.bannerList?.result" :key="item.id">
         <img :src="item.imgUrl">
       </el-carousel-item>
     </el-carousel>

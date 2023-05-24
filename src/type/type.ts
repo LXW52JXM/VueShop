@@ -1,3 +1,9 @@
+// import a from './test.json'
+
+// type result1 = typeof a.result 
+
+
+
 export interface Children {
 	id: string;
 	name: string;
@@ -15,20 +21,13 @@ export interface Good {
 	orderNum?: any;
 }
 
-export interface Result {
+export interface Result{
 	id: string;
 	name: string;
 	picture: string;
 	children: Children[];
 	goods: Good[];
 }
-
-export interface RootObject {
-	code: string;
-	msg: string;
-	result: Result[];
-}
-
 
 //banner轮播图数据
 export interface BannerResult {
@@ -38,11 +37,6 @@ export interface BannerResult {
 	type: string;
 }
 
-export interface BannerRoot {
-	code: string;
-	msg: string;
-	result: BannerResult[];
-}
 
 //new数据
 export interface NewResult {
@@ -54,8 +48,27 @@ export interface NewResult {
 	orderNum: number;
 }
 
-export interface NewRoot {
+//goods数据
+export interface GoodsChildren {
+	id: string;
+	name: string;
+	layer: number;
+	parent?: any;
+}
+
+export interface GoodsResult {
+	id: string;
+	name: string;
+	picture: string;
+	saleInfo: string;
+	children: GoodsChildren[];
+	goods: Good[];
+}
+
+
+//根
+export interface RootObject<T> {
 	code: string;
 	msg: string;
-	result: Result[];
+	result: T;
 }

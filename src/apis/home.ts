@@ -20,3 +20,14 @@ export function getNewAPi(){
     url:"/home/new"
   })
 }
+
+/**
+ * @description: 获取所有商品模块
+ * @param {*}
+ * @return {*}
+ */
+export const getGoodsAPI = () => {
+  return http({
+    url: '/home/goods'
+  })
+}

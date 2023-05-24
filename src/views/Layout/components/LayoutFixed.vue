@@ -2,9 +2,9 @@
 // vueUse
 import { useScroll } from '@vueuse/core'
 import {useCategoryStore} from "@/stores/layout"
-const { y } = useScroll(window)
+const { y } = useScroll(window)//窗体的距离
 
-const store=useCategoryStore()
+const store=useCategoryStore()//导航数据渲染
 
 </script>
 
@@ -17,7 +17,7 @@ const store=useCategoryStore()
         <li class="home">
           <RouterLink to="/">首页</RouterLink>
         </li>
-        <li v-for="item in store.categoryList" :key="item.id">
+        <li v-for="item in store.categoryList?.result" :key="item.id">
           <RouterLink to="/">{{ item.name }}</RouterLink>
         </li>
       </ul>
