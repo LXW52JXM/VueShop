@@ -28,8 +28,8 @@ export const userNew = defineStore("new", () => {
     const newList = ref<RootObject<NewResult[]>>()
     //获取new数据
     const getNew = async () => {
-        const ref: any = await getNewAPi()
-        newList.value = ref
+        const res: any = await getNewAPi()
+        newList.value = res
     }
 
     return {
@@ -44,8 +44,8 @@ export const userNew = defineStore("new", () => {
 export const userGoods=defineStore("goods",()=>{
     const goodsList=ref<RootObject<GoodsResult[]>>()
     const getGoods=async ()=>{
-        const ref:any=await getGoodsAPI()
-        goodsList.value=ref
+        const res:any=await getGoodsAPI()
+        goodsList.value=res
     }
 
     return{

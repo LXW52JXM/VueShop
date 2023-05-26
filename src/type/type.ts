@@ -65,6 +65,24 @@ export interface GoodsResult {
 	goods: Good[];
 }
 
+//Category数据
+export interface CategoryChildren {
+	id: string;
+	name: string;
+	picture: string;
+	parentId?: any;
+	parentName?: any;
+	goods: Good[];
+	categories?: any;
+	brands?: any;
+	saleProperties?: any;
+}
+export interface CategoryResult {
+	id: string;
+	name: string;
+	picture?: any;
+	children: CategoryChildren[];
+}
 
 //根
 export interface RootObject<T> {

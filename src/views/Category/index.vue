@@ -1,5 +1,18 @@
 <script setup lang="ts">
-
+import {useCatgory} from "@/stores/category"
+import {  onMounted} from "vue";
+import {onBeforeRouteUpdate, useRoute} from "vue-router"
+const store= useCatgory()
+let id=Number(useRoute().params.id)//从路由' path '中提取的解码参数的对象
+onMounted(async() => {
+    // console.log(id)
+    await store.getCatgory(Number(id))
+})
+//路由'category/:id'中id参数发生变化时，数据接口重新发送
+onBeforeRouteUpdate(async (to)=>{
+    // console.log(id)
+    await store.getCatgory(Number(to.params.id))
+})
 </script>
 
 <template>
@@ -9,7 +22,7 @@
       <div class="bread-container">
         <el-breadcrumb separator=">">
           <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>居家</el-breadcrumb-item>
+          <el-breadcrumb-item>{{ store.catgoryList?.result.name }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
     </div>
