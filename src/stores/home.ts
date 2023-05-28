@@ -9,8 +9,8 @@ export const useBanner = defineStore("banner", () => {
     //banner轮播图数据
     const bannerList = ref<RootObject<BannerResult[]>>()
     //获取banner轮播图数据方法
-    const getBanner = async () => {
-        const res: any = await getBannerAPI()
+    const getBanner = async (params:{distributionSite?:string}={}) => {
+        const res: any = await getBannerAPI(params)
         bannerList.value = res
     }
 
