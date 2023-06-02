@@ -1,25 +1,12 @@
 <script setup lang="ts">
-import {useCatgory} from "@/stores/category"
-import { useBanner } from "@/stores/home";
-import {  onMounted} from "vue";
-import {onBeforeRouteUpdate, useRoute} from "vue-router"
-const store= useCatgory()
-let id=Number(useRoute().params.id)//从路由' path '中提取的解码参数的对象
-onMounted(async() => {
-    // console.log(id)
-    await store.getCatgory(Number(id))
-})
-//路由'category/:id'中id参数发生变化时，数据接口重新发送，做精确更新
-onBeforeRouteUpdate(async (to)=>{
-    // console.log(id)
-    await store.getCatgory(Number(to.params.id))
-})
+import GoodsItem from "@/views/Home/components/GoodsItem.vue"//使用组件渲染分类部分的数据
+import { Categorys } from "./composables/useCatgorys"
+import { useBanners } from "./composables/useBanners"
+//面包屑解构赋值
+const { store } = Categorys()
 
-//轮播图数据
-const banner=useBanner()
-onMounted(async () => {
-   await banner.getBanner({distributionSite:'2'})
-})
+//轮播图解构赋值
+const { banner } = useBanners()
 </script>
 
 <template>
@@ -32,13 +19,33 @@ onMounted(async () => {
           <el-breadcrumb-item>{{ store.catgoryList?.result.name }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
-       <!-- 轮播图 -->
-       <div class="home-banner">
+      <!-- 轮播图 -->
+      <div class="home-banner">
         <el-carousel height="500px">
           <el-carousel-item v-for="item in banner.bannerList?.result" :key="item.id">
             <img :src="item.imgUrl" alt="">
           </el-carousel-item>
         </el-carousel>
+      </div>
+      <!-- 分类 -->
+      <div class="sub-list">
+        <h3>全部分类</h3>
+        <ul>
+          <li v-for="i in store.catgoryList?.result.children" :key="i.id">
+            <RouterLink :to="`/category/sub/${i.id}`"> <!-- 点击跳转到二级路由页面 -->
+              <img :src="i.picture" />
+              <p>{{ i.name }}</p>
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
+      <div class="ref-goods" v-for="item in store.catgoryList?.result.children" :key="item.id">
+        <div class="head">
+          <h3>- {{ item.name }}-</h3>
+        </div>
+        <div class="body">
+          <GoodsItem v-for="good in item.goods" :goods="good" :key="good.id" />
+        </div>
       </div>
     </div>
   </div>
@@ -122,14 +129,15 @@ onMounted(async () => {
   .bread-container {
     padding: 25px 0;
   }
-  .home-banner {
-  width: 1240px;
-  height: 500px;
 
-  img {
-    width: 100%;
+  .home-banner {
+    width: 1240px;
     height: 500px;
+
+    img {
+      width: 100%;
+      height: 500px;
+    }
   }
-}
 }
 </style>

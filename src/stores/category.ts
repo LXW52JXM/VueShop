@@ -1,10 +1,10 @@
-import { getTopCategoryAPI } from "@/apis/category"
+import { getTopCategoryAPI,getCategoryFilterAPI } from "@/apis/category"
 import { defineStore } from "pinia"
-import type { RootObject, CategoryResult } from "@/type/type"
+import type { RootObject, CategoryResult ,ResultFilter} from "@/type/type"
 import { ref } from "vue"
 
 /**
- * Category面包屑数据请求
+ * 一级Category面包屑页面数据请求
  */
 export const useCatgory = defineStore("catgroy", () => {
     const catgoryList = ref<RootObject<CategoryResult>>()
@@ -15,5 +15,20 @@ export const useCatgory = defineStore("catgroy", () => {
     return{
         catgoryList,
         getCatgory
+    }
+})
+
+/**
+ * 二级SubCategory面包屑页面数据请求
+ */
+export const useCatgorySubCategory=defineStore("CatgorySubCategory",()=>{
+    const subCategoryList=ref<RootObject<ResultFilter>>()
+    const getSubCategory=async (id:number)=>{
+        const res:any=await getCategoryFilterAPI(id)
+        subCategoryList.value=res
+    }
+    return{
+        subCategoryList,
+        getSubCategory
     }
 })

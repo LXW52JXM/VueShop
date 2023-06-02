@@ -84,6 +84,26 @@ export interface CategoryResult {
 	children: CategoryChildren[];
 }
 
+//二级分类列表数据
+export interface Category {
+	id: string;
+	name: string;
+	layer: number;
+	parent?: any;
+}
+
+export interface ResultFilter {
+	id: string;
+	name: string;
+	picture?: any;
+	parentId: string;
+	parentName: string;
+	goods: Good[];
+	categories: Category[];
+	brands: any[];
+	saleProperties: any[];
+}
+
 //根
 export interface RootObject<T> {
 	code: string;

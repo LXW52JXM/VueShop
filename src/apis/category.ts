@@ -12,3 +12,17 @@ export const getTopCategoryAPI = (id:number) => {
       }
     })
   }
+
+  /**
+ * @description: 获取二级分类列表数据
+ * @param {*} id 分类id 
+ * @return {*}
+ */
+export const getCategoryFilterAPI = (id:number) => {
+  return http({
+    url:'/category/sub/filter',
+    params:{
+      id
+    }
+  })
+}
